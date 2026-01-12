@@ -1,0 +1,16 @@
+config.properties
+
+# Maven
+target/
+
+# IDE specific
+.vscode/
+.project
+.classpath
+.settings/
+.factorypath
+.idea/
+*.iml
+
+# Java
+*.class
