@@ -1,0 +1,59 @@
+package com.gameshop.repository;
+
+import com.gameshop.model.PriceLog;
+import com.gameshop.model.GameLog;
+import com.gameshop.DatabaseConnector;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class LogsRepository {
+    
+    public List<PriceLog> getAllPriceLogs() {
+        List<PriceLog> priceLogs = new ArrayList<>();
+        String query = "SELECT * FROM Heberle_price_logs";
+
+        try (Connection conn = DatabaseConnector.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                priceLogs.add(new PriceLog(
+                    rs.getInt("logId"),
+                    rs.getInt("gameId"),
+                    rs.getDouble("oldPrice"),
+                    rs.getDouble("newPrice"),
+                    rs.getTimestamp("changeDate").toLocalDateTime()
+                ));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error while loading price logs: " + e.getMessage());
+        }
+        return priceLogs;
+    }
+
+    public List<GameLog> getAllGameLogs() {
+        List<GameLog> gameLogs = new ArrayList<>();
+        String query = "SELECT * FROM Heberle_game_logs";
+
+        try (Connection conn = DatabaseConnector.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                gameLogs.add(new GameLog(
+                    rs.getInt("logId"),
+                    rs.getInt("gameId"),
+                    rs.getString("name"),
+                    rs.getDouble("lastPrice"),
+                    rs.getInt("inventoryaAtDeletion"),
+                    rs.getTimestamp("deleteDate").toLocalDateTime()
+                ));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error while loading game logs: " + e.getMessage());
+        }
+        return gameLogs;
+    }
+
+}
