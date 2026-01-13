@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gameshop.controller.GameTableController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <Label text="Game Inventory" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+        <TableView fx:id="gameTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="colName" prefWidth="250.0" text="Name" />
+                <TableColumn fx:id="colPrice" prefWidth="100.0" text="Preis" />
+                <TableColumn fx:id="colStock" prefWidth="100.0" text="Bestand" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>
