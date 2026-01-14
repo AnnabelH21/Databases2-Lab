@@ -26,7 +26,7 @@ public class Order {
     public String getGameNameAtOrder() { return gameNameAtOrder; }
     public LocalDateTime getOrderDate() { return orderDate; }
     public String getStatus() { return status; }
-    public double getTotalAmount() { return amount; }
+    public int getAmount() { return amount; }
     public LocalDateTime getDeliveryDate() { return deliveryDate; }
 
     public void setStatus(String status) { this.status = status; }

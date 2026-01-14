@@ -25,8 +25,8 @@ public class SalesRepository {
                     rs.getInt("gameId"),
                     rs.getInt("amount"),
                     rs.getDouble("price"),
-                    rs.getString("gameNameAtSale"),
-                    rs.getTimestamp("saleDate").toLocalDateTime()    
+                    rs.getString("gameName"),
+                    rs.getTimestamp("salesDate").toLocalDateTime()
                 ));
             }
         } catch (SQLException e) {

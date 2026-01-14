@@ -11,7 +11,7 @@ public class LogsRepository {
     
     public List<PriceLog> getAllPriceLogs() {
         List<PriceLog> priceLogs = new ArrayList<>();
-        String query = "SELECT * FROM Heberle_price_logs";
+        String query = "SELECT * FROM Heberle_log_prices";
 
         try (Connection conn = DatabaseConnector.getConnection();
              Statement stmt = conn.createStatement();
@@ -23,7 +23,7 @@ public class LogsRepository {
                     rs.getInt("gameId"),
                     rs.getDouble("oldPrice"),
                     rs.getDouble("newPrice"),
-                    rs.getTimestamp("changeDate").toLocalDateTime()
+                    rs.getTimestamp("change_Date").toLocalDateTime()
                 ));
             }
         } catch (SQLException e) {
@@ -34,7 +34,7 @@ public class LogsRepository {
 
     public List<GameLog> getAllGameLogs() {
         List<GameLog> gameLogs = new ArrayList<>();
-        String query = "SELECT * FROM Heberle_game_logs";
+        String query = "SELECT * FROM Heberle_log_games";
 
         try (Connection conn = DatabaseConnector.getConnection();
              Statement stmt = conn.createStatement();
@@ -46,7 +46,7 @@ public class LogsRepository {
                     rs.getInt("gameId"),
                     rs.getString("name"),
                     rs.getDouble("lastPrice"),
-                    rs.getInt("inventoryaAtDeletion"),
+                    rs.getInt("inventoryAtDelete"),
                     rs.getTimestamp("deleteDate").toLocalDateTime()
                 ));
             }

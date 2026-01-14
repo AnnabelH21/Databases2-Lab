@@ -7,15 +7,15 @@ public class GameLog {
     private Integer gameId;
     private String name;
     private Double lastPrice;
-    private int inventoryaAtDeletion;
+    private int inventoryAtDelete;
     private LocalDateTime deleteDate;
 
-    public GameLog(int logId, Integer gameId, String name, Double lastPrice, int inventoryaAtDeletion, LocalDateTime deleteDate) {
+    public GameLog(int logId, Integer gameId, String name, Double lastPrice, int inventoryAtDelete, LocalDateTime deleteDate) {
         this.logId = logId;
         this.gameId = gameId;
         this.name = name;
         this.lastPrice = lastPrice;
-        this.inventoryaAtDeletion = inventoryaAtDeletion;
+        this.inventoryAtDelete = inventoryAtDelete;
         this.deleteDate = deleteDate;
     }
 
@@ -23,7 +23,7 @@ public class GameLog {
     public Integer getGameId() { return gameId; }
     public String getName() { return name; }
     public Double getLastPrice() { return lastPrice; }
-    public int getInventoryaAtDeletion() { return inventoryaAtDeletion; }
+    public int getInventoryAtDelete() { return inventoryAtDelete; }
     public LocalDateTime getDeleteDate() { return deleteDate; }
 
 }

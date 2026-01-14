@@ -20,7 +20,7 @@ public class GameTableController {
 
     @FXML
     public void initialize() {
-        // Connect columns with model "columns"
+        // Define which attributes from model belong in which column
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
@@ -31,6 +31,7 @@ public class GameTableController {
     }
 
     public void refreshTable() {
+
         gameTable.setItems(FXCollections.observableArrayList(gameRepo.findAll()));
     }
 }

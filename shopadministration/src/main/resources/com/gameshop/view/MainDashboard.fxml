@@ -23,6 +23,8 @@
                 <Button fx:id="btnGames" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment:  CENTER LEFT;" text="🎮 Spiele-Verwaltung" onAction="#showGames"/>
                 <Button fx:id="btnOrders" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER LEFT;" text="📦 Bestellungen" onAction="#showOrders"/>
                 <Button fx:id="btnSales" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER LEFT;" text="📈 Statistiken" onAction="#showSales"/>
+                <Button fx:id="btnPriceLog" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER LEFT;" text="Preisänderungen" onAction="#showPriceLog"/>
+                <Button fx:id="btnGameLog" maxWidth="Infinity" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: CENTER LEFT;" text="Archivierte Spiele" onAction="#showGameLog"/>
             </children>
         </VBox>
     </left>

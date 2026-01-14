@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
-import javafx.scene.control.Label;
 
 import java.io.IOException;
 
@@ -21,9 +20,9 @@ public class MainController {
 
     @FXML
     private void showGames() {
-        loadView("GameTableView");
+        loadViews("GameTableView");
     }
-    private void loadView(String fxmlName) {
+    private void loadViews(String fxmlName) {
         try {
             Parent node = FXMLLoader.load(getClass().getResource("/com/gameshop/view/" + fxmlName + ".fxml"));
             contentArea.getChildren().setAll(node);
@@ -34,11 +33,15 @@ public class MainController {
 
     @FXML
     private void showOrders() {
-        contentArea.getChildren().setAll(new Label("--- Hier kommen die Bestellungen hin ---"));
+        loadViews("OrderView");
     }
 
     @FXML
     private void showSales() {
-        contentArea.getChildren().setAll(new Label("--- Hier kommen die Statistiken hin ---"));
+        loadViews("SalesView");
     }
+
+    @FXML private void showPriceLog() { loadViews("PriceLogView");}
+
+    @FXML private void showGameLog(){ loadViews("GameLogView");}
 }
