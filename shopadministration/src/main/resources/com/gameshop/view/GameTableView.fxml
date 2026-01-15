@@ -10,6 +10,12 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
     <Label text="Game Inventory" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    <VBox spacing="10.0">
+        <HBox spacing="10.0">
+            <Button fx:id="insert" text="Spiel hinzufügen" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" onAction="#handleOpenAddDialog"/>
+            <Button fx:id="delete" text="Spiel archivieren" style="-fx-background-color: #d13a00; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" />
+        </HBox>
+    </VBox>
     <TableView fx:id="gameTable" VBox.vgrow="ALWAYS">
         <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
