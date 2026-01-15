@@ -8,12 +8,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Year;
 import java.time.format.TextStyle;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class SalesController {
 
     private SalesRepository salesRepo= new SalesRepository();
+    private SalesService salesService = new SalesService();
 
     @FXML private DatePicker salesDatePicker;
     @FXML private RadioButton rbYear;
@@ -29,9 +32,22 @@ public class SalesController {
     @FXML private TableColumn<Sale, Integer> colAmount;
     @FXML private TableColumn<Sale, Double> colPrice;
     @FXML private TableColumn<Sale, LocalDateTime> colSalesDate;
+    @FXML private ComboBox<String> monthPicker;
+    @FXML private ComboBox<Integer> yearPicker;
+    private Integer currentYear = LocalDate.now().getYear();
+    private ArrayList<Integer> years = new ArrayList<Integer>();
 
     @FXML
     public void initialize(){
+
+        monthPicker.setItems(FXCollections.observableArrayList("Kein Monat (Ganzes Jahr)","Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"));
+
+        for (Integer year = 1990; year<= currentYear; year++) {
+            years.add(year);
+        }
+
+        yearPicker.setItems(FXCollections.observableArrayList(years));
+
         colId.setCellValueFactory(new PropertyValueFactory<>("saleId"));
         colGameId.setCellValueFactory(new PropertyValueFactory<>("gameId"));
         colGameName.setCellValueFactory(new PropertyValueFactory<>("gameName"));
@@ -49,39 +65,38 @@ public class SalesController {
 
     @FXML
     private void handleCalculateSales() {
-        LocalDate selectedDate = salesDatePicker.getValue();
 
-//        // 1. Validierung: Hat der User ein Datum gewählt?
-//        if (selectedDate == null) {
-//            revenueLabel.setText("--- €");
-//            periodLabel.setText("BITTE DATUM WÄHLEN");
-//            return;
+        Double result;
+        Integer selectedYear = yearPicker.getValue();
+        if (selectedYear == null) return; // Sicherheitsscheck
+
+        // 2. Den gewählten Index des Monats bestimmen
+        int monthIndex = monthPicker.getSelectionModel().getSelectedIndex();
+
+
+        SalesResult salesResult = salesService.getRevenueForSelection(selectedYear,monthIndex, monthPicker.getValue());
+        infoLabel.setText(salesResult.infoText);
+
+//        if (monthIndex == 0) {
+//            // FALL A: "Gesamtes Jahr" ist ausgewählt (Index 0)
+//             = salesRepo.getYearlyRevenue(selectedYear);
+//            infoLabel.setText("Gesamtumsatz Jahr " + selectedYear);
+//        }
+//        else {
+//            // FALL B: Ein spezifischer Monat ist ausgewählt (Index 1-12)
+//            // Der monthIndex entspricht hier direkt der SQL-Zahl (Jan=1, Feb=2...)
+//             = salesRepo.getMonthlyRevenue(selectedYear, monthIndex);
+//
+//            String selectedMonthName = monthPicker.getValue();
+//            infoLabel.setText("Umsatz " + selectedMonthName + " " + selectedYear);
 //        }
 
-        int year = selectedDate.getYear();
-        double result = 0;
+        // 3. Ergebnis anzeigen (Null-Check falls DB leer)
+//        if ( != null) {
+//            revenueLabel.setText(String.format("%.2f €", ));
+//        } else {
+//            revenueLabel.setText("0,00 €");
+//        }
 
-        // 2. Weiche: Je nach Auswahl die passende Funktion aufrufen
-        if (rbYear.isSelected()) {
-            // Ruft deine existierende Funktion für das Jahr auf
-            result = salesRepo.getYearlyRevenue(year);
-
-            infoLabel.setText("GESAMTUMSATZ FÜR DAS JAHR " + year);
-
-        }
-        else {
-            // Ruft deine existierende Funktion für Jahr + Monat auf
-            int month = selectedDate.getMonthValue();
-            result = salesRepo.getMonthlyRevenue(year, month);
-
-            String monthName = selectedDate.getMonth().getDisplayName(TextStyle.FULL, Locale.GERMAN);
-            infoLabel.setText("UMSATZ FÜR " + monthName.toUpperCase() + " " + year);
-
-            // Optional: Auch die Tabelle auf den Monat filtern
-//            updateTable(year, month);
-        }
-
-        // 3. Anzeige formatieren
-        revenueLabel.setText(String.format("%,.2f €", result));
     }
 }
