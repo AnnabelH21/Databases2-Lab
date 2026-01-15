@@ -1,7 +1,6 @@
-package com.gameshop.controller;
+package com.gameshop.games;
 
 import com.gameshop.model.Game;
-import com.gameshop.repository.GameRepository;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;

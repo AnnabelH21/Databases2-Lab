@@ -1,9 +1,6 @@
-package com.gameshop.controller;
+package com.gameshop.logs;
 
-import com.gameshop.model.Game;
 import com.gameshop.model.PriceLog;
-import com.gameshop.repository.GameRepository;
-import com.gameshop.repository.LogsRepository;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;

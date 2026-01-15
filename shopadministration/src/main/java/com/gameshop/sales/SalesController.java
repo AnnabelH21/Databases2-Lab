@@ -1,7 +1,6 @@
-package com.gameshop.controller;
+package com.gameshop.sales;
 
 import com.gameshop.model.Sale;
-import com.gameshop.repository.SalesRepository;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

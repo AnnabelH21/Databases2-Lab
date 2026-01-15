@@ -1,8 +1,6 @@
-package com.gameshop.controller;
+package com.gameshop.orders;
 
-import com.gameshop.model.Game;
 import com.gameshop.model.Order;
-import com.gameshop.repository.OrderRepository;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

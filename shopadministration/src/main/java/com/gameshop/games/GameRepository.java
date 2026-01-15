@@ -1,4 +1,4 @@
-package com.gameshop.repository;
+package com.gameshop.games;
 
 import com.gameshop.DatabaseConnector;
 import com.gameshop.model.Game;

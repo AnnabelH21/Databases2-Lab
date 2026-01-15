@@ -1,4 +1,4 @@
-package com.gameshop.repository;
+package com.gameshop.logs;
 
 import com.gameshop.model.PriceLog;
 import com.gameshop.model.GameLog;

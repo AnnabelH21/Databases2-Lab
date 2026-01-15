@@ -8,14 +8,15 @@
 
 <VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.gameshop.controller.SalesController"
+            fx:controller="com.gameshop.sales.SalesController"
             prefHeight="400.0" prefWidth="600.0">
     <Label text="Finanzübersicht" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
     <HBox spacing="15.0" alignment="CENTER_LEFT" style="-fx-background-color: #ffffff; -fx-padding: 10; -fx-background-radius: 5; -fx-border-color: #dcdde1; -fx-border-radius: 5;">
         <children>
             <Label text="Zeitraum wählen:" style="-fx-font-weight: bold;" />
             <DatePicker fx:id="salesDatePicker" prefWidth="150.0" promptText="Datum klicken..." />
-
+                <ComboBox fx:id="monthPicker" promptText="Choose a month"/>
+                <ComboBox fx:id="yearPicker" promptText="Choose a year"/>
             <Separator orientation="VERTICAL" />
 
             <VBox spacing="5">

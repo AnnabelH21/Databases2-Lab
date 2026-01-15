@@ -9,7 +9,7 @@
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.gameshop.controller.PriceLogController"
+      fx:controller="com.gameshop.logs.PriceLogController"
       prefHeight="400.0" prefWidth="600.0">
 
     <padding>

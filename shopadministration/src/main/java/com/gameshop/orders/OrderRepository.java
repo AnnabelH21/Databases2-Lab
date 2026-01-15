@@ -1,4 +1,4 @@
-package com.gameshop.repository;
+package com.gameshop.orders;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
