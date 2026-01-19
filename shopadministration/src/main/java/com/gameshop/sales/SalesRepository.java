@@ -1,7 +1,9 @@
 package com.gameshop.sales;
 
-import com.gameshop.model.Sale;
 import com.gameshop.DatabaseConnector;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.*;
@@ -68,5 +70,24 @@ public class SalesRepository {
             System.err.println("Error while calculating monthly revenue: " + e.getMessage());
         }
         return null;
+    }
+
+    public void addSale(Integer gameId, String gameName, Integer amount, Double price){
+        String sql = "INSERT INTO Heberle_sales (gameId, gameName, amount, price, salesDate) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, gameId);
+            pstmt.setString(2, gameName);
+            pstmt.setInt(3, amount);
+            pstmt.setDouble(4, price);
+            pstmt.setTimestamp(5, new java.sql.Timestamp(System.currentTimeMillis()));
+            pstmt.executeUpdate();
+
+            System.out.println("sale of " + gameName + "' successfully added.");
+        } catch (SQLException e) {
+            System.err.println("Error while adding sale: " + e.getMessage());
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.gameshop.model;
+package com.gameshop.games;
 
 public class Game {
     private int id;
@@ -12,6 +12,8 @@ public class Game {
         this.price = price;
         this.inventory = inventory;
     }
+
+    public Game(){}
 
     // Getters
     public int getId() { return id; }

@@ -1,4 +1,4 @@
-package com.gameshop.model;
+package com.gameshop.logs;
 
 import java.time.LocalDateTime;
 

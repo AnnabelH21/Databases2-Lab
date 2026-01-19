@@ -1,17 +1,15 @@
 package com.gameshop.sales;
 
-import com.gameshop.model.Sale;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Year;
-import java.time.format.TextStyle;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class SalesController {
 
@@ -68,35 +66,47 @@ public class SalesController {
 
         Double result;
         Integer selectedYear = yearPicker.getValue();
-        if (selectedYear == null) return; // Sicherheitsscheck
+        if (selectedYear == null) return;
 
-        // 2. Den gewählten Index des Monats bestimmen
+        // Define month through index position
         int monthIndex = monthPicker.getSelectionModel().getSelectedIndex();
-
 
         SalesResult salesResult = salesService.getRevenueForSelection(selectedYear,monthIndex, monthPicker.getValue());
         infoLabel.setText(salesResult.infoText);
+    }
 
-//        if (monthIndex == 0) {
-//            // FALL A: "Gesamtes Jahr" ist ausgewählt (Index 0)
-//             = salesRepo.getYearlyRevenue(selectedYear);
-//            infoLabel.setText("Gesamtumsatz Jahr " + selectedYear);
-//        }
-//        else {
-//            // FALL B: Ein spezifischer Monat ist ausgewählt (Index 1-12)
-//            // Der monthIndex entspricht hier direkt der SQL-Zahl (Jan=1, Feb=2...)
-//             = salesRepo.getMonthlyRevenue(selectedYear, monthIndex);
-//
-//            String selectedMonthName = monthPicker.getValue();
-//            infoLabel.setText("Umsatz " + selectedMonthName + " " + selectedYear);
-//        }
+    @FXML
+    private void handleAddSale(){
 
-        // 3. Ergebnis anzeigen (Null-Check falls DB leer)
-//        if ( != null) {
-//            revenueLabel.setText(String.format("%.2f €", ));
-//        } else {
-//            revenueLabel.setText("0,00 €");
-//        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gameshop/view/DialogAddtoSales.fxml"));
 
+        try{
+            DialogPane dialogPane = loader.load();
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setDialogPane(dialogPane);
+            dialog.setTitle("Verkauf eintragen");
+
+            // get button from fxml
+            ButtonType saveButton = dialogPane.getButtonTypes()
+                    .stream()
+                    .filter(buttonType -> buttonType.getButtonData() == ButtonBar.ButtonData.OK_DONE)
+                    .findFirst()
+                    .orElse(null);
+
+            //wait for click
+            dialog.showAndWait().ifPresent(response -> {
+                if (response == saveButton) {
+                    // get data from input fields
+                    TextField gameIdField = (TextField) dialogPane.lookup("#gameIdField");
+                    TextField gameNameField = (TextField) dialogPane.lookup("#gameNameField");
+                    TextField amountField = (TextField) dialogPane.lookup("#amountField");
+                    salesService.addSaleEntry(gameIdField.getText(),gameNameField.getText(), amountField.getText());
+
+                    refreshTable();
+                }
+            });
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }

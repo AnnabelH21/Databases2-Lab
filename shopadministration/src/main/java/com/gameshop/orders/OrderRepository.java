@@ -3,7 +3,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gameshop.model.Order;
 import com.gameshop.DatabaseConnector;
 
 

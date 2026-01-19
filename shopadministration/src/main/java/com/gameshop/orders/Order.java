@@ -1,4 +1,4 @@
-package com.gameshop.model;
+package com.gameshop.orders;
 
 import java.time.LocalDateTime;
 

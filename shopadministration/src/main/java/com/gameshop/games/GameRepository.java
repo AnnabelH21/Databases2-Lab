@@ -1,7 +1,7 @@
 package com.gameshop.games;
 
 import com.gameshop.DatabaseConnector;
-import com.gameshop.model.Game;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +29,29 @@ public class GameRepository {
             System.err.println("Error while loading games: " + e.getMessage());
         }
         return games;
+    }
+
+    public Game findGameById(Integer Id){
+        String sql = "SELECT gameId, name, price, inventory FROM Heberle_games WHERE gameId = ?";
+        Game game = new Game();
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);)
+             {
+                 pstmt.setInt(1, Id);
+                 ResultSet rs = pstmt.executeQuery();
+
+                 while (rs.next()) {
+                 game = new Game(
+                        rs.getInt("gameId"),
+                        rs.getString("name"),
+                        rs.getDouble("price"),
+                        rs.getInt("inventory")
+                );
+            }
+        } catch (SQLException e) {
+            System.err.println("Error while loading games: " + e.getMessage());
+        }
+        return game;
     }
 
     // add a new game to the db

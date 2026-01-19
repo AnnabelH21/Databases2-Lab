@@ -13,7 +13,8 @@
     <VBox spacing="10.0">
         <HBox spacing="10.0">
             <Button fx:id="insert" text="Spiel hinzufügen" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" onAction="#handleOpenAddDialog"/>
-            <Button fx:id="delete" text="Spiel archivieren" style="-fx-background-color: #d13a00; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" />
+            <Button fx:id="delete" text="Spiel archivieren" style="-fx-background-color: #d13a00; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" onAction="#handleOpenDeleteGameDialog"/>
+            <Button fx:id="addPriceChangeButton" text="Spielpreis ändern" style="-fx-text-fill: #ffff; -fx-background-color: #3498db; -fx-font-weight: bold;" onAction="#handleOpenAddPriceChangeDialog"/>
         </HBox>
     </VBox>
     <TableView fx:id="gameTable" VBox.vgrow="ALWAYS">

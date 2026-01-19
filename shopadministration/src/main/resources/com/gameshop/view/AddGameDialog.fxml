@@ -9,10 +9,10 @@
 <DialogPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             headerText="Neues Spiel zum Inventar hinzufügen">
     <content>
-        <GridPane>
+        <GridPane vgap="20" hgap="20">
             <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
             <TextField fx:id="nameField" promptText="z.B. Super Mario"
-                       GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                       GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
             <Label text="Preis (€):" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
             <TextField fx:id="priceField" promptText="z.B. 59.99"
@@ -22,7 +22,10 @@
             <TextField fx:id="stockField" promptText="Anzahl im Lager"
                        GridPane.columnIndex="1" GridPane.rowIndex="2"/>
         </GridPane>
-
     </content>
+    <buttonTypes>
+        <ButtonType fx:id="saveButtonType" text="Speichern" buttonData="OK_DONE"/>
+        <ButtonType text="Abbrechen" buttonData="CANCEL_CLOSE"/>
+    </buttonTypes>
 </DialogPane>
 

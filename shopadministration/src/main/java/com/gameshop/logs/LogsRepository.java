@@ -1,7 +1,5 @@
 package com.gameshop.logs;
 
-import com.gameshop.model.PriceLog;
-import com.gameshop.model.GameLog;
 import com.gameshop.DatabaseConnector;
 import java.sql.*;
 import java.util.ArrayList;

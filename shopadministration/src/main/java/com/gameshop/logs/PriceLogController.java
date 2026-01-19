@@ -1,12 +1,12 @@
 package com.gameshop.logs;
 
-import com.gameshop.model.PriceLog;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class PriceLogController {

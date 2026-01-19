@@ -6,9 +6,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
+<DialogPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.gameshop.games.GameTableController"
-            prefHeight="400.0" prefWidth="600.0">
+            headerText="Spiel aus dem Sortiment nehmen">
 
-</VBox>
+    <content>
+        <GridPane vgap="20" hgap="20">
+            <Label fx:id="labelGameId" GridPane.columnIndex="0" GridPane.rowIndex="0" text="Game ID"></Label>
+            <TextField fx:id="gameIdField" promptText="z.B 4" GridPane.columnIndex="1" GridPane.rowIndex="0"></TextField>
+        </GridPane>
+    </content>
+    <buttonTypes>
+        <ButtonType fx:id="saveButton" text="Speichern" buttonData="OK_DONE"></ButtonType>
+        <ButtonType fx:id="cancelButton" text="Abbrechen" buttonData="CANCEL_CLOSE"></ButtonType>
+    </buttonTypes>
+
+</DialogPane>

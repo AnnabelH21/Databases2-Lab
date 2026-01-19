@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+
+            headerText="Preisänderung eintragen">
+    <content>
+        <VBox spacing="10">
+            <Label  text ="Game ID" />
+            <TextField  fx:id="gameIdField" promptText="z.B. 1"/>
+<!--            <Label  text="Konkreter neuer Preis" GridPane.columnIndex="0" GridPane.rowIndex="1"/>-->
+<!--            <TextField  fx:id="fixedNewPrice" promptText="z.B. 10.99" GridPane.columnIndex="1" GridPane.rowIndex="1"/>-->
+<!--            <Label text="Sale: Preis um Prozentsatz reduzieren" GridPane.columnIndex="0" GridPane.rowIndex="2"/>-->
+<!--            <TextField fx:id="percentageNewPriceField" promptText="z.B. 13.99" GridPane.columnIndex="1" GridPane.rowIndex="2"/>-->
+            <Label text="Art der Änderung:"/>
+            <ComboBox fx:id="priceChangeTypePicker" prefWidth="200" promptText="Wähle eine Preisänderung..."/>
+
+            <VBox fx:id="fixedPriceBox" spacing="5" visible="false" managed="false">
+                <Label text="Neuer Festpreis in €:"/>
+                <TextField fx:id="fixedPriceField"/>
+            </VBox>
+
+            <VBox fx:id="salePriceBox" spacing="5" visible="false" managed="false">
+                <Label text="Rabatt in Prozent in %:"/>
+                <TextField fx:id="salePriceField"/>
+            </VBox>
+        </VBox>
+    </content>
+    <buttonTypes>
+        <ButtonType fx:id="saveButton" text="Speichern" buttonData="OK_DONE"/>
+        <ButtonType fx:id="cancelButton" text="Abbrechen" buttonData="CANCEL_CLOSE"/>
+    </buttonTypes>
+
+</DialogPane>
